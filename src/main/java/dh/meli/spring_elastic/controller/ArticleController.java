@@ -17,4 +17,9 @@ public class ArticleController {
     public ResponseEntity<Article> saveArticle(@RequestBody Article article) {
         return ResponseEntity.ok(service.save(article));
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Article> findArticleById(@PathVariable int id) {
+        return ResponseEntity.ok(service.findById(id));
+    }
 }
