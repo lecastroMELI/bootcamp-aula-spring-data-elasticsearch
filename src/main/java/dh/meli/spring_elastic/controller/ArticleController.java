@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
@@ -21,5 +23,20 @@ public class ArticleController {
     @GetMapping("/{id}")
     public ResponseEntity<Article> findArticleById(@PathVariable int id) {
         return ResponseEntity.ok(service.findById(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable int id) {
+        return ResponseEntity.ok(service.deleteById(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Article>> findAllArticles() {
+        return ResponseEntity.ok(service.findAllArticles());
+    }
+
+    @PutMapping
+    public ResponseEntity<Article> updateArticle(@RequestBody Article article) {
+        return ResponseEntity.ok(service.updateArticle(article));
     }
 }
